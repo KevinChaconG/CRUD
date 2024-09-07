@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRUD.Views.EmpleadoMain"
+             xmlns:viewModel="clr-namespace:CRUD.ViewModels"
+             x:DataType="viewModel:EmpleadoMainViewModel"
+             xmlns:model="clr-namespace:CRUD.Models"
+             Title="EmpleadoMain">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="10,0,10,0">
+            <Button Text="Agregar Empleado" Command="{Binding goToAddEmpleadoFormCommand}" />
+
+            <Grid Margin="5,5,5,5" RowDefinitions="Auto" ColumnDefinitions="*,*,*" >
+                <Label Text="Nombre" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0" />
+                <Label Text="Direccion" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="1" />
+                <Label Text="Email" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="2" />
+            </Grid>
+
+            <CollectionView ItemsSource="{Binding EmpleadoCollection}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Empleado">
+                        <Grid RowSpacing="0" RowDefinitions="5,Auto,5,1" ColumnDefinitions="*,*,*" VerticalOptions="FillAndExpand">
+                            <Label Text="{Binding Nombre}" Grid.Row="1" Grid.Column="0" />
+                            <Label Text="{Binding Direccion}" Grid.Row="1" Grid.Column="1" />
+                            <Label Text="{Binding Email}" Grid.Row="1" Grid.Column="2" />
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:EmpleadoMainViewModel}}, Path=SelectEmpleadoCommand}" CommandParameter="{Binding .}" />
+
+                            </Grid.GestureRecognizers>
+                        </Grid>
+
+                    </DataTemplate>
+                    
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

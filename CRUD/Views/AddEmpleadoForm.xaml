@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRUD.Views.AddEmpleadoForm"
+             xmlns:viewModel="clr-namespace:CRUD.ViewModels"
+             x:DataType="viewModel:AddEmpleadoFormViewModel"
+             Title="Empleado">
+    <VerticalStackLayout Padding="30,0,30,0" Spacing="5" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+        <Label Text="Nombre Completo: "/>
+        <Entry Text="{Binding Nombre}" Keyboard="Text" Placeholder="Ingrese el nombre completo"/>
+
+        <Label Text="Direccion: "/>
+        <Entry Text="{Binding Direccion}" Keyboard="Text" Placeholder="Ingrese la direccion completa"/>
+
+        <Label Text="Email: "/>
+        <Entry Text="{Binding Email}" Keyboard="Email" Placeholder="Ingrese el correo electronico" />
+
+        <Button Text="Guardar" Command="{Binding AddUpdateCommand}" />
+
+    </VerticalStackLayout>
+</ContentPage>
